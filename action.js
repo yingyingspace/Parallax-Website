@@ -5,6 +5,12 @@ time = document.getElementsByClassName('bubbles')[0];
 var fish2move = 100;
 var fish3move = 900;
 var fish4move = 1200;
+var fishWaveSettings = {
+    fish1: { baseTop: 0, amplitude: 18, wavelength: 220, phase: 0 },
+    fish2: { baseTop: 32, amplitude: 24, wavelength: 260, phase: 60 },
+    fish3: { baseTop: 60, amplitude: 20, wavelength: 240, phase: 120 },
+    fish4: { baseTop: 87, amplitude: 16, wavelength: 200, phase: 180 }
+};
 
 if (screen.width < 400) {
 
@@ -16,6 +22,13 @@ if (screen.width < 400) {
     fish2move = 1680;
     fish3move = 3000;
     fish4move = 4300;
+
+    fishWaveSettings = {
+        fish1: { baseTop: 0, amplitude: 28, wavelength: 200, phase: 0 },
+        fish2: { baseTop: 32, amplitude: 36, wavelength: 220, phase: 60 },
+        fish3: { baseTop: 60, amplitude: 30, wavelength: 210, phase: 120 },
+        fish4: { baseTop: 87, amplitude: 24, wavelength: 190, phase: 180 }
+    };
 }
 
 
@@ -49,11 +62,18 @@ window.addEventListener('scroll', function () {
         splash.style.top = 20 + value * -0.3 + 'px';
     }
 
-    //Move fishes horizontally
+    //Move fishes in an S-shaped path (horizontal + vertical wave)
     fish1.style.right = (value - 100) * 1 + 'px';
+    fish1.style.top = `calc(${fishWaveSettings.fish1.baseTop}% + ${Math.sin((value + fishWaveSettings.fish1.phase) / fishWaveSettings.fish1.wavelength) * fishWaveSettings.fish1.amplitude}px)`;
+
     fish2.style.left = (value - fish2move) * 1 + 'px';
+    fish2.style.top = `calc(${fishWaveSettings.fish2.baseTop}% + ${Math.sin((value + fishWaveSettings.fish2.phase) / fishWaveSettings.fish2.wavelength) * fishWaveSettings.fish2.amplitude}px)`;
+
     fish3.style.right = (value - fish3move) * 1 + 'px';
+    fish3.style.top = `calc(${fishWaveSettings.fish3.baseTop}% + ${Math.sin((value + fishWaveSettings.fish3.phase) / fishWaveSettings.fish3.wavelength) * fishWaveSettings.fish3.amplitude}px)`;
+
     fish4.style.left = (value - fish4move) * 1 + 'px';
+    fish4.style.top = `calc(${fishWaveSettings.fish4.baseTop}% + ${Math.sin((value + fishWaveSettings.fish4.phase) / fishWaveSettings.fish4.wavelength) * fishWaveSettings.fish4.amplitude}px)`;
 })
 
 
