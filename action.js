@@ -6,10 +6,10 @@ var fish2move = 100;
 var fish3move = 900;
 var fish4move = 1200;
 var fishWaveSettings = {
-    fish1: { baseTop: 0, amplitude: 18, wavelength: 220, phase: 0 },
-    fish2: { baseTop: 32, amplitude: 24, wavelength: 260, phase: 60 },
-    fish3: { baseTop: 60, amplitude: 20, wavelength: 240, phase: 120 },
-    fish4: { baseTop: 87, amplitude: 16, wavelength: 200, phase: 180 }
+    fish1: { baseTop: 0, amplitude: 8, wavelength: 220, phase: 0 },
+    fish2: { baseTop: 32, amplitude: 10, wavelength: 260, phase: 60 },
+    fish3: { baseTop: 60, amplitude: 9, wavelength: 240, phase: 120 },
+    fish4: { baseTop: 87, amplitude: 7, wavelength: 200, phase: 180 }
 };
 
 if (screen.width < 400) {
@@ -24,10 +24,10 @@ if (screen.width < 400) {
     fish4move = 4300;
 
     fishWaveSettings = {
-        fish1: { baseTop: 0, amplitude: 28, wavelength: 200, phase: 0 },
-        fish2: { baseTop: 32, amplitude: 36, wavelength: 220, phase: 60 },
-        fish3: { baseTop: 60, amplitude: 30, wavelength: 210, phase: 120 },
-        fish4: { baseTop: 87, amplitude: 24, wavelength: 190, phase: 180 }
+        fish1: { baseTop: 0, amplitude: 12, wavelength: 200, phase: 0 },
+        fish2: { baseTop: 32, amplitude: 14, wavelength: 220, phase: 60 },
+        fish3: { baseTop: 60, amplitude: 13, wavelength: 210, phase: 120 },
+        fish4: { baseTop: 87, amplitude: 11, wavelength: 190, phase: 180 }
     };
 }
 
