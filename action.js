@@ -20,6 +20,18 @@ if (screen.width < 400) {
 
 
 
+const fishWave = {
+    fish1: { baseTop: 0, amplitude: 20, wavelength: 160, phase: 0 },
+    fish2: { baseTop: 32, amplitude: 24, wavelength: 190, phase: 40 },
+    fish3: { baseTop: 60, amplitude: 18, wavelength: 140, phase: 80 },
+    fish4: { baseTop: 87, amplitude: 22, wavelength: 170, phase: 120 }
+};
+
+function setFishWavePosition(fish, config, value) {
+    const wave = Math.sin((value + config.phase) / config.wavelength) * config.amplitude;
+    fish.style.top = `calc(${config.baseTop}% + ${wave}px)`;
+}
+
 window.addEventListener('scroll', function () {
 
     let value = window.scrollY;   //Get Scroll Value (Mobile - High)
@@ -54,6 +66,12 @@ window.addEventListener('scroll', function () {
     fish2.style.left = (value - fish2move) * 1 + 'px';
     fish3.style.right = (value - fish3move) * 1 + 'px';
     fish4.style.left = (value - fish4move) * 1 + 'px';
+
+    // Add an S-shaped swimming motion
+    setFishWavePosition(fish1, fishWave.fish1, value);
+    setFishWavePosition(fish2, fishWave.fish2, value);
+    setFishWavePosition(fish3, fishWave.fish3, value);
+    setFishWavePosition(fish4, fishWave.fish4, value);
 })
 
 
